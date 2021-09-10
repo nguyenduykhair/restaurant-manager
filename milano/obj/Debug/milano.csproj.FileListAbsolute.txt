@@ -1,0 +1,13 @@
+D:\C#\project\milano\milano\milano\bin\Debug\milano.exe.config
+D:\C#\project\milano\milano\milano\bin\Debug\milano.exe
+D:\C#\project\milano\milano\milano\bin\Debug\milano.pdb
+D:\C#\project\milano\milano\milano\obj\Debug\milano.csproj.AssemblyReference.cache
+D:\C#\project\milano\milano\milano\obj\Debug\milano.fAccountProfile.resources
+D:\C#\project\milano\milano\milano\obj\Debug\milano.fAdmin.resources
+D:\C#\project\milano\milano\milano\obj\Debug\milano.fLogin.resources
+D:\C#\project\milano\milano\milano\obj\Debug\milano.fTableManager.resources
+D:\C#\project\milano\milano\milano\obj\Debug\milano.Properties.Resources.resources
+D:\C#\project\milano\milano\milano\obj\Debug\milano.csproj.GenerateResource.cache
+D:\C#\project\milano\milano\milano\obj\Debug\milano.csproj.CoreCompileInputs.cache
+D:\C#\project\milano\milano\milano\obj\Debug\milano.exe
+D:\C#\project\milano\milano\milano\obj\Debug\milano.pdb
