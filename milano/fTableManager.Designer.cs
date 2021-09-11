@@ -64,14 +64,14 @@ namespace milano
             this.thôngTinTàiKhoảnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1057, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1057, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(67, 26);
             this.adminToolStripMenuItem.Text = "Admin";
             this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
@@ -81,7 +81,7 @@ namespace milano
             this.thôngTinCáNhânToolStripMenuItem,
             this.đăngXuấtToolStripMenuItem});
             this.thôngTinTàiKhoảnToolStripMenuItem.Name = "thôngTinTàiKhoảnToolStripMenuItem";
-            this.thôngTinTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(151, 24);
+            this.thôngTinTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(151, 26);
             this.thôngTinTàiKhoảnToolStripMenuItem.Text = "Thông tin tài khoản";
             // 
             // thôngTinCáNhânToolStripMenuItem
@@ -162,12 +162,14 @@ namespace milano
             // 
             // lsvBill
             // 
+            this.lsvBill.GridLines = true;
             this.lsvBill.HideSelection = false;
             this.lsvBill.Location = new System.Drawing.Point(6, 68);
             this.lsvBill.Name = "lsvBill";
             this.lsvBill.Size = new System.Drawing.Size(416, 434);
             this.lsvBill.TabIndex = 0;
             this.lsvBill.UseCompatibleStateImageBehavior = false;
+            this.lsvBill.View = System.Windows.Forms.View.List;
             // 
             // panel3
             // 
@@ -226,6 +228,7 @@ namespace milano
             // 
             // flpTable
             // 
+            this.flpTable.AutoScroll = true;
             this.flpTable.Location = new System.Drawing.Point(0, 31);
             this.flpTable.Name = "flpTable";
             this.flpTable.Size = new System.Drawing.Size(617, 575);

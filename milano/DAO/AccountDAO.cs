@@ -21,10 +21,13 @@ namespace milano.DAO
 
         public bool Login(string userName, string passWord) // các xử lý khi đăng nhập
         {
-            string query = "SELECT * FROM dbo.Account WHERE UserName = N'" + userName + "' AND PassWord = N'" + passWord +"' ";
+            string query = "USP_Login @userName , @passWord";
+            // string query = "SELECT * FROM dbo.Account WHERE UserName = N'" + userName + "' AND PassWord = N'" + passWord +"' ";
 
-            DataTable result = DataProvider.Instance.ExecuteQuery(query); // ExecuteQuery: sẽ trả ra những dòng kết quả
+            // DataTable result = DataProvider.Instance.ExecuteQuery(query); // ExecuteQuery: sẽ trả ra những dòng kết quả
             // DataTable result = DataProvider.Instance.ExecuteNonQuery(query);  // ExecuteQuery: sẽ trả ra số dòng được thực thi(INSERT, DELECT, UPDATE) 
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { userName, passWord });
+
 
             return result.Rows.Count > 0; // số dòng trả ra lớn hơn 0
         }
