@@ -44,6 +44,8 @@ namespace milano
         // hiển thị 1 cái button cho người dùng nhìn thấy
         void LoadTable()
         {
+            // xóa màn hình
+            flpTable.Controls.Clear();
             // lấy được danh sách table 
             List<Table> tableList = TableDAO.Instance.LoadTableList();
 
