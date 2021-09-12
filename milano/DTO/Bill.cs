@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 using System.Data;// add libary of the DataRow
 
 
-
 // lấy ra số lượng xem thử nó thành công hay không , sau đó chuyển nó thành 1 cái Bill
 namespace milano.DTO
 {
     public class Bill
     {
-        public Bill(int id, DateTime? dateCheckin, DateTime? dateCheckOut, int status)
+        // update thuộc tính giảm giá (discount) vào bảng Bill
+        public Bill(int id, DateTime? dateCheckin, DateTime? dateCheckOut, int status, int discount = 0)
         {
             this.ID = id;
             this.DateCheckIn = dateCheckin;
             this.DateCheckOut = dateCheckOut;
             this.Status = status;
+            this.Discount = discount;
 
         }
 
@@ -32,7 +33,15 @@ namespace milano.DTO
             if (dateCheckOutTemp.ToString() != "")
                 this.DateCheckOut = (DateTime?)dateCheckOutTemp;
 
-            this.Status = (int)row["status"]; 
+            this.Status = (int)row["status"];
+            this.Discount = (int)row["discount"];
+        }
+
+        private int discount;
+        public int Discount 
+        { 
+            get => discount; 
+            set => discount = value; 
         }
 
         private int status;
@@ -66,6 +75,6 @@ namespace milano.DTO
             get => iD; 
             set => iD = value; 
         }
-       
+        
     }
 }

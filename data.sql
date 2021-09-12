@@ -304,7 +304,9 @@ select * from dbo.TableFood
 
 
 
-CREATE PROC USP_InsertBill
+
+
+ALTER PROC USP_InsertBill -- vừa mới update thuộc tính giảm giá (discount) vào bảng Bill nên phải dùng ALTER
 @idTable INT
 AS
 BEGIN
@@ -312,12 +314,14 @@ BEGIN
         ( DateCheckIn ,
           DateCheckOut ,
           idTable ,
-          status
+          status,
+		  discount
         )
      VALUES  ( GETDATE() , -- DateCheckIn - date
           NULL , -- DateCheckOut - date
           @idTable, -- idTable - int
-          0  -- status - int
+          0 , -- status - int
+		  0
         )
 END
 GO
@@ -403,6 +407,40 @@ BEGIN
 		UPDATE dbo.TableFood SET status = N'Trống' WHERE id = @idTable
 END
 GO
+
+
+
+
+-- update thuộc tính giảm giá (discount) vào bảng Bill
+ALTER TABLE dbo.Bill
+ADD discount INT
+
+UPDATE dbo.Bill SET discount = 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

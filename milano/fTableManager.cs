@@ -174,13 +174,14 @@ namespace milano
             Table table = lsvBill.Tag as Table;
 
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
+            int discount = (int)nmDisCount.Value;  // ép kiểu
 
             //  if (idBill == -1)  thì sẽ không làm gì hết
             if (idBill != -1)
             {
                 if (MessageBox.Show("Bạn có chắc thanh toán hóa đơn cho bàn " + table.Name, "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    BillDAO.Instance.CheckOut(idBill);
+                    BillDAO.Instance.CheckOut(idBill, discount); // add discount
                     ShowBill(table.ID);
 
                     LoadTable();
