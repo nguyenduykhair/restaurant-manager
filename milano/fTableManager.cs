@@ -21,6 +21,8 @@ namespace milano
             LoadTable();
         }
 
+
+        // dành cho phương thức
         #region Method
 
         // hiển thị 1 cái button cho người dùng nhìn thấy
@@ -34,17 +36,17 @@ namespace milano
                 // điều chỉnh kích cỡ của bàn
                 Button btn = new Button() { Width = TableDAO.TableWidth, Height = TableDAO.TableHeight };
                 btn.Text = item.Name + Environment.NewLine + item.Status; // hiển thị tên bàn + \n
-                btn.Click += btn_Click;  // khi nhấn vào buttun thì nó sẽ gọi 1 hàm khác để xử lý chuyện đó
-                btn.Tag = item;
+                btn.Click += btn_Click;  // khi nhấn vào buttun thì nó sẽ gọi 1 hàm khác để xử lý chuyện đó (đó chính là show ra cái hóa đơn)
+                btn.Tag = item; // tag: kiểu dữ liệu là object, dùng nó để lưu luôn cái table của bạn vô
 
                 // màu sắc của bàn lúc 'có người' và lúc 'trống'
                 switch (item.Status)
                 {
                     case "Trống":
-                        btn.BackColor = Color.Aqua;
+                        btn.BackColor = Color.AntiqueWhite;
                         break;
                     default:
-                        btn.BackColor = Color.LightPink;
+                        btn.BackColor = Color.LimeGreen;
                         break;
                 }
 
@@ -52,8 +54,10 @@ namespace milano
             }
         }
 
-        void ShowBill(int id)
+        // lấy hóa đơn ra
+        void ShowBill(int id) // đối số này là là dùng để xác định ShowBill cho cái table nào 
         {
+            //xóa dữ liệu trở lại ban đầu
             lsvBill.Items.Clear();
             List<milano.DTO.Menu> listBillInfo = MenuDAO.Instance.GetListMenuByTable(id);
 
@@ -70,7 +74,7 @@ namespace milano
 
         #endregion
 
-
+        // dành cho các sự kiện
         #region Events
         void btn_Click(object sender, EventArgs e)
         {
