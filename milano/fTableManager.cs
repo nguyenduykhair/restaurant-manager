@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization; // add library this if want use CultureInfo 
 
 namespace milano
 {
@@ -61,15 +62,25 @@ namespace milano
             lsvBill.Items.Clear();
             List<milano.DTO.Menu> listBillInfo = MenuDAO.Instance.GetListMenuByTable(id);
 
+            float totalPrice = 0;
             foreach (milano.DTO.Menu item in listBillInfo)
             {
-                ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
-                lsvItem.SubItems.Add(item.Count.ToString());
-                lsvItem.SubItems.Add(item.Price.ToString());
-                lsvItem.SubItems.Add(item.TotalPrice.ToString());
-
+                ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString()); // tên món
+                lsvItem.SubItems.Add(item.Count.ToString()); // số lượng
+                lsvItem.SubItems.Add(item.Price.ToString()); // đơn giá
+                lsvItem.SubItems.Add(item.TotalPrice.ToString()); // thành tiền
+                totalPrice += item.TotalPrice;
                 lsvBill.Items.Add(lsvItem);
+
             }
+            // add đơn vị đồng điền: đ, $, .....
+            // CultureInfo culture = new CultureInfo("en-US"); // tiền Đôla Mỹ
+            CultureInfo culture = new CultureInfo("vi-VN"); // tiền Việt
+
+            //Thread.CurrentThread.CurrentCulture = culture;
+
+            // tính tổng tiền
+            txbTotalPrice.Text = totalPrice.ToString("c", culture); // "c" này là viết tắt của tiền bạc
         }
 
         #endregion
