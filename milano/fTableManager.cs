@@ -176,10 +176,18 @@ namespace milano
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
             int discount = (int)nmDisCount.Value;  // ép kiểu
 
+
+            double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]); // ép kiểu
+            // tiền phải trả = thành tiền - (thành tiền/100)*discount 
+            double finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
+
+
             //  if (idBill == -1)  thì sẽ không làm gì hết
             if (idBill != -1)
             {
-                if (MessageBox.Show("Bạn có chắc thanh toán hóa đơn cho bàn " + table.Name, "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+
+                // tính tiền khi đã chọn mục giảm giá
+                if (MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn cho bàn {0}\nTổng tiền - (Tổng tiền / 100) x Giảm giá\n=> {1} - ({1} / 100) x {2} = {3}", table.Name, totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     BillDAO.Instance.CheckOut(idBill, discount); // add discount
                     ShowBill(table.ID);
