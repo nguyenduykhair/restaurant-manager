@@ -24,6 +24,7 @@ namespace milano.DAO
         {
             List<BillInfo> listBillInfo = new List<BillInfo>();
 
+
             // viết câu query
             DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.BillInfo WHERE idBill = " + id);
 
@@ -31,10 +32,18 @@ namespace milano.DAO
             foreach (DataRow item in data.Rows)
             {
                 BillInfo info = new BillInfo(item); // info bằng ngay chính cái item đưa vô
-                listBillInfo.Add(info);
+                listBillInfo.Add(info); 
             }
 
             return listBillInfo;
         }
+
+        public void InsertBillInfo(int idBill, int idFood, int count)
+        {
+            DataProvider.Instance.ExecuteNonQuery("USP_InsertBillInfo @idBill , @idFood , @count", new object[] { idBill, idFood, count });
+        }
     }
 }
+
+
+

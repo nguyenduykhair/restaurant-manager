@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using milano.DTO;
 
-
 // class này có nhiệm vụ lấy ra cái Bill từ cái IdTable
 namespace milano.DAO
 {
@@ -28,6 +27,8 @@ namespace milano.DAO
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        /// 
+        // hàm này dùng để lấy cái idBill ra
         public int GetUncheckBillIDByTableID(int id) // trả ra cho người ta 1 cái id của Bill dựa vào cái IdTable
         {
 
@@ -44,6 +45,22 @@ namespace milano.DAO
 
             // có nghĩa là không có thằng nào hết
             return -1;
+        }
+        public void InsertBill(int id)
+        {
+            DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable", new object[] { id });
+        }
+
+        public int GetMaxIDBill()
+        {
+            try // cố gắng để làm việc này
+            {
+                return (int)DataProvider.Instance.ExecuteScalar("SELECT MAX(id) FROM dbo.Bill");
+            }
+            catch
+            {
+                return 1;
+            }
         }
     }
 }

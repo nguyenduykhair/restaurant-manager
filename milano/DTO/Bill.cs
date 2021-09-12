@@ -12,11 +12,11 @@ namespace milano.DTO
 {
     public class Bill
     {
-        public Bill(int id, DateTime? dataCheckin, DateTime? dataCheckOut, int status)
+        public Bill(int id, DateTime? dateCheckin, DateTime? dateCheckOut, int status)
         {
             this.ID = id;
-            this.DataCheckIn = dataCheckin;
-            this.DataCheckOut = dataCheckOut;
+            this.DateCheckIn = dateCheckin;
+            this.DateCheckOut = dateCheckOut;
             this.Status = status;
 
         }
@@ -26,10 +26,11 @@ namespace milano.DTO
         public Bill(DataRow row)
         {
             this.ID = (int)row["id"];
-            this.DataCheckIn = (DateTime?)row["dataCheckin"]; // với tình hình = null, thì bạn ko thể nào check ra được
-            var dataCheckOutTemp = row["dataCheckOut"];
-            if (dataCheckOutTemp.ToString() != "")
-                this.DataCheckOut = (DateTime?)dataCheckOutTemp;
+            this.DateCheckIn = (DateTime?)row["dateCheckin"]; // với tình hình = null, thì bạn ko thể nào check ra được
+           
+            var dateCheckOutTemp = row["dateCheckOut"];
+            if (dateCheckOutTemp.ToString() != "")
+                this.DateCheckOut = (DateTime?)dateCheckOutTemp;
 
             this.Status = (int)row["status"]; 
         }
@@ -42,24 +43,24 @@ namespace milano.DTO
             set => status = value; 
         }
 
-        private DateTime? dataCheckOut;  // đóng gói
+        private DateTime? dateCheckOut;  // đóng gói
 
-        public DateTime? DataCheckOut//DateTime ở đây là vì kiểu dữ liệu này nó ko cho phép null, ? cho phép nó null
+        public DateTime? DateCheckOut//DateTime ở đây là vì kiểu dữ liệu này nó ko cho phép null, ? cho phép nó null
         {
-            get => dataCheckOut;
-            set => dataCheckOut = value;
+            get => dateCheckOut;
+            set => dateCheckOut = value;
         }
 
-        private DateTime? dataCheckIn; 
+        private DateTime? dateCheckIn; 
 
-        public DateTime? DataCheckIn
+        public DateTime? DateCheckIn
         {
-            get => dataCheckIn;
-            set => dataCheckIn = value;
+            get => dateCheckIn;
+            set => dateCheckIn = value;
         }
 
         private int iD;
-
+      
         public int ID 
         { 
             get => iD; 

@@ -20,11 +20,26 @@ namespace milano
             InitializeComponent();
 
             LoadTable();
+            LoadCategory();
         }
 
 
         // dành cho phương thức
         #region Method
+        // chia  Category ra nhiều lớp
+        void LoadCategory()
+        {
+            List<Category> listCategory = CategoryDAO.Instance.GetListCategory();
+            cbCategory.DataSource = listCategory;
+            cbCategory.DisplayMember = "Name"; // dùng để chỉ cho nó biết phải hiển thị ở trường nào
+        }
+
+        void LoadFoodListByCategoryID(int id)
+        {
+            List<Food> listFood = FoodDAO.Instance.GetFoodByCategoryID(id);
+            cbFood.DataSource = listFood;
+            cbFood.DisplayMember = "Name";
+        }
 
         // hiển thị 1 cái button cho người dùng nhìn thấy
         void LoadTable()
@@ -90,6 +105,7 @@ namespace milano
         void btn_Click(object sender, EventArgs e)
         {
             int tableID = ((sender as Button).Tag as Table).ID;
+            lsvBill.Tag = (sender as Button).Tag; // btnAddFood_Click
             ShowBill(tableID);
         }
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -108,6 +124,46 @@ namespace milano
             fAdmin f = new fAdmin();
             f.ShowDialog();
         }
-        #endregion
+
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = 0; // id chỗ này để truyền vào hàm này LoadFoodListByCategoryID(int id)
+
+            ComboBox cb = sender as ComboBox;
+
+            if (cb.SelectedItem == null) // nếu nó chưa có thì sẽ return luôn không chạy nữa
+                return;
+
+            Category selected = cb.SelectedItem as Category;
+            id = selected.ID;
+
+            LoadFoodListByCategoryID(id);
+        }
+
+        // 1 table chỉ có tối đa 1 Bill để cho checkout
+        private void btnAddFood_Click(object sender, EventArgs e)
+        {
+            Table table = lsvBill.Tag as Table; // lấy được cái table hiện tại
+
+            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID); // lấy được cái Bill hiện tại
+            int foodID = (cbFood.SelectedItem as Food).ID;
+            int count = (int)nmFoodCount.Value;
+
+
+            
+            if (idBill == -1) // trường hợp này ko có Bill nào hết
+            {
+                BillDAO.Instance.InsertBill(table.ID); // thêm mới
+                BillInfoDAO.Instance.InsertBillInfo(BillDAO.Instance.GetMaxIDBill(), foodID, count);
+            }
+            else  // trường hợp Bill đã tồn tại
+            {
+                BillInfoDAO.Instance.InsertBillInfo(idBill, foodID, count);
+            }
+
+            ShowBill(table.ID);
+        }
+
+        #endregion        
     }
 }
