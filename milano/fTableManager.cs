@@ -162,8 +162,31 @@ namespace milano
             }
 
             ShowBill(table.ID);
+
+            LoadTable();
+        }        
+        // button khi nhấn THANH TOÁN
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            // lấy ra table hiện tại
+            Table table = lsvBill.Tag as Table;
+
+            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
+
+            //  if (idBill == -1)  thì sẽ không làm gì hết
+            if (idBill != -1)
+            {
+                if (MessageBox.Show("Bạn có chắc thanh toán hóa đơn cho bàn " + table.Name, "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
+                    BillDAO.Instance.CheckOut(idBill);
+                    ShowBill(table.ID);
+
+                    LoadTable();
+                }
+            }
         }
 
         #endregion        
+
     }
 }

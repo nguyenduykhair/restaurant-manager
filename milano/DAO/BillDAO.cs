@@ -46,6 +46,14 @@ namespace milano.DAO
             // có nghĩa là không có thằng nào hết
             return -1;
         }
+
+        // chức năng thanh toán
+        public void CheckOut(int id)
+        {
+            string query = "UPDATE dbo.Bill SET status = 1 WHERE id = " + id;
+            DataProvider.Instance.ExecuteNonQuery(query);
+        }
+
         public void InsertBill(int id)
         {
             DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable", new object[] { id });
