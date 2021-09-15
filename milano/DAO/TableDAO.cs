@@ -27,6 +27,13 @@ namespace milano.DAO
 
         private TableDAO() { }
 
+
+        // viết query cho câu lệnh hóa vị để chuyển bàn
+        public void SwitchTable(int id1, int id2)
+        {
+            DataProvider.Instance.ExecuteQuery("USP_SwitchTable @idTable1 , @idTable2", new object[] { id1, id2 });
+        }
+
         public List<Table> LoadTableList()
         {
             List<Table> tableList = new List<Table>();
@@ -35,7 +42,7 @@ namespace milano.DAO
 
 
             // dùng vòng lặp để lấy ra từng dòng trong row
-            foreach (DataRow item in data.Rows) 
+            foreach (DataRow item in data.Rows)
             {
                 Table table = new Table(item);
                 tableList.Add(table);

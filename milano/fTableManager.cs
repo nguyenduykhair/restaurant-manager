@@ -21,6 +21,7 @@ namespace milano
 
             LoadTable();
             LoadCategory();
+            LoadComboboxTable(cbSwitchTable);
         }
 
 
@@ -100,6 +101,12 @@ namespace milano
             txbTotalPrice.Text = totalPrice.ToString("c", culture); // "c" này là viết tắt của tiền bạc
         }
 
+        void LoadComboboxTable(ComboBox cb)
+        {
+            cb.DataSource = TableDAO.Instance.LoadTableList();
+            cb.DisplayMember = "Name";
+        }
+
         #endregion
 
         // dành cho các sự kiện
@@ -152,7 +159,7 @@ namespace milano
             int count = (int)nmFoodCount.Value;
 
 
-            
+
             if (idBill == -1) // trường hợp này ko có Bill nào hết
             {
                 BillDAO.Instance.InsertBill(table.ID); // thêm mới
@@ -166,7 +173,7 @@ namespace milano
             ShowBill(table.ID);
 
             LoadTable();
-        }        
+        }
         // button khi nhấn THANH TOÁN
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
@@ -197,7 +204,22 @@ namespace milano
             }
         }
 
-        #endregion        
+        // chuyển bàn
+        private void btnSwitchTable_Click(object sender, EventArgs e)
+        {
+            int id1 = (lsvBill.Tag as Table).ID;
 
+            int id2 = (cbSwitchTable.SelectedItem as Table).ID;
+            if (MessageBox.Show(string.Format("Bạn có thật sự muốn chuyển bàn {0} qua bàn {1}", (lsvBill.Tag as Table).Name, (cbSwitchTable.SelectedItem as Table).Name), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                TableDAO.Instance.SwitchTable(id1, id2);
+
+                LoadTable();
+            }
+
+            #endregion
+
+
+        }
     }
 }
