@@ -1,4 +1,6 @@
-﻿using System;
+﻿using milano.DAO;
+using milano.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using milano.DAO;
 
 namespace milano
 {
@@ -20,14 +21,15 @@ namespace milano
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string userName = txbUserName.Text;
+            string userName = txbUserName.Text;  // là hàm login thì mới dùng được hàng này
             string passWord = txbPassWord.Text;
-            if (Login(userName, passWord)) // là hàm login thì mới dùng được hàng này
+            if (Login(userName, passWord))
             {
-                fTableManager f = new fTableManager();
-                this.Hide();// ẩn
-                f.ShowDialog(); // xử lý xong thằng này mới được xử lý thằng dưới
-                this.Show(); 
+                Account loginAccount = AccountDAO.Instance.GetAccountByUserName(userName);
+                fTableManager f = new fTableManager(loginAccount); // hoàn thành việt in ấn 
+                this.Hide(); // ẩn
+                f.ShowDialog();  // xử lý xong thằng này mới được xử lý thằng dưới
+                this.Show();
             }
             else
             {

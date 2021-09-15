@@ -33,7 +33,7 @@ namespace milano
             this.txbUserName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txbDisPlayName = new System.Windows.Forms.TextBox();
+            this.txbDisplayName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txbPassWord = new System.Windows.Forms.TextBox();
@@ -81,19 +81,19 @@ namespace milano
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txbDisPlayName);
+            this.panel1.Controls.Add(this.txbDisplayName);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(12, 85);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(532, 67);
             this.panel1.TabIndex = 2;
             // 
-            // txbDisPlayName
+            // txbDisplayName
             // 
-            this.txbDisPlayName.Location = new System.Drawing.Point(201, 19);
-            this.txbDisPlayName.Name = "txbDisPlayName";
-            this.txbDisPlayName.Size = new System.Drawing.Size(328, 22);
-            this.txbDisPlayName.TabIndex = 1;
+            this.txbDisplayName.Location = new System.Drawing.Point(201, 19);
+            this.txbDisplayName.Name = "txbDisplayName";
+            this.txbDisplayName.Size = new System.Drawing.Size(328, 22);
+            this.txbDisplayName.TabIndex = 1;
             // 
             // label2
             // 
@@ -194,6 +194,7 @@ namespace milano
             this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Cập nhập";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnExit
             // 
@@ -204,7 +205,6 @@ namespace milano
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // fAccountProfile
             // 
@@ -243,7 +243,7 @@ namespace milano
         private System.Windows.Forms.TextBox txbUserName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txbDisPlayName;
+        private System.Windows.Forms.TextBox txbDisplayName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txbPassWord;
