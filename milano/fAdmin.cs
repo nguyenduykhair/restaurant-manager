@@ -15,6 +15,8 @@ namespace milano
 {
     public partial class fAdmin : Form
     {
+        // này dùng để bắt sự kiện khi nhắn 'Xem'
+        BindingSource foodList = new BindingSource();
         public fAdmin()
         {
             InitializeComponent();
@@ -25,6 +27,9 @@ namespace milano
 
         void Load()
         {
+
+            dtgvFood.DataSource = foodList;
+
             LoadDateTimePickerBill();
             LoadListBillByDate(dtpkFromDate.Value, dtpkToDate.Value);
             LoadListFood();
@@ -60,7 +65,7 @@ namespace milano
 
         void LoadListFood()
         {
-            dtgvFood.DataSource = FoodDAO.Instance.GetListFood();
+            foodList.DataSource = FoodDAO.Instance.GetListFood();
         }
         #endregion
 
@@ -77,9 +82,11 @@ namespace milano
 
         private void txbFoodID_TextChanged(object sender, EventArgs e)
         {
+            
             if (dtgvFood.SelectedCells.Count > 0)
             {
-                int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
+                // cách lấy dữ liệu trong datagitview
+                int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value; // key cần tìm
 
                 Category cateogory = CategoryDAO.Instance.GetCategoryByID(id);
 
