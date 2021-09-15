@@ -190,6 +190,7 @@ namespace milano
             // 
             // dtgvBill
             // 
+            this.dtgvBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvBill.Location = new System.Drawing.Point(3, 6);
             this.dtgvBill.Name = "dtgvBill";
@@ -216,19 +217,20 @@ namespace milano
             this.btnViewBill.TabIndex = 3;
             this.btnViewBill.Text = "Thống kê";
             this.btnViewBill.UseVisualStyleBackColor = true;
+            this.btnViewBill.Click += new System.EventHandler(this.btnViewBill_Click);
             // 
             // dtpkToDate
             // 
-            this.dtpkToDate.Location = new System.Drawing.Point(586, 3);
+            this.dtpkToDate.Location = new System.Drawing.Point(529, 3);
             this.dtpkToDate.Name = "dtpkToDate";
-            this.dtpkToDate.Size = new System.Drawing.Size(200, 22);
+            this.dtpkToDate.Size = new System.Drawing.Size(251, 22);
             this.dtpkToDate.TabIndex = 2;
             // 
             // dtpkFromDate
             // 
             this.dtpkFromDate.Location = new System.Drawing.Point(12, 3);
             this.dtpkFromDate.Name = "dtpkFromDate";
-            this.dtpkFromDate.Size = new System.Drawing.Size(216, 22);
+            this.dtpkFromDate.Size = new System.Drawing.Size(277, 22);
             this.dtpkFromDate.TabIndex = 1;
             // 
             // tpFool

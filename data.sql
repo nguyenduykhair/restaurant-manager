@@ -521,10 +521,27 @@ GO
 UPDATE dbo.TableFood SET status = N'Trống'
 
 
+	
 
 
+-- hiển thị danh sách hóa đơn
+ALTER TABLE dbo.Bill ADD totalPrice FLOAT
 
+DELETE dbo.BillInfo
+DELETE dbo.Bill
 
+GO
+
+CREATE PROC USP_GetListBillByDate
+@checkIn date, @checkOut date
+AS 
+BEGIN
+	SELECT t.name AS [Tên bàn], b.totalPrice AS [Tổng tiền], DateCheckIn AS [Ngày vào], DateCheckOut AS [Ngày ra], discount AS [Giảm giá]
+	FROM dbo.Bill AS b,dbo.TableFood AS t
+	WHERE DateCheckIn >= @checkIn AND DateCheckOut <= @checkOut AND b.status = 1
+	AND t.id = b.idTable
+END
+GO
 
 
 
