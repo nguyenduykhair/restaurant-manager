@@ -1,4 +1,5 @@
 ﻿using milano.DAO;
+using milano.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,8 @@ namespace milano
             LoadDateTimePickerBill();
             LoadListBillByDate(dtpkFromDate.Value, dtpkToDate.Value);
             LoadListFood();
+            LoadCategoryIntoCombobox(cbFoodCategory);
+            AddFoodBinding();
         }
 
         void LoadDateTimePickerBill()
@@ -39,6 +42,21 @@ namespace milano
         {
             dtgvBill.DataSource = BillDAO.Instance.GetBillListByDate(checkIn, checkOut);
         }
+
+        // hàm lấy tên từng loại thức ăn ra
+        void AddFoodBinding()  
+        {
+            txbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name"));
+            txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID"));
+            nmFoodPrice.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Price"));
+        }
+
+        void LoadCategoryIntoCombobox(ComboBox cb)
+        {
+            cb.DataSource = CategoryDAO.Instance.GetListCategory();
+            cb.DisplayMember = "Name"; // hiển thị ra tên
+        }
+
 
         void LoadListFood()
         {
@@ -55,6 +73,32 @@ namespace milano
         private void btnShowFood_Click(object sender, EventArgs e)
         {
             LoadListFood();
+        }
+
+        private void txbFoodID_TextChanged(object sender, EventArgs e)
+        {
+            if (dtgvFood.SelectedCells.Count > 0)
+            {
+                int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
+
+                Category cateogory = CategoryDAO.Instance.GetCategoryByID(id);
+
+                cbFoodCategory.SelectedItem = cateogory;
+
+                int index = -1;
+                int i = 0;
+                foreach (Category item in cbFoodCategory.Items)
+                {
+                    if (item.ID == cateogory.ID)
+                    {
+                        index = i;
+                        break;
+                    }
+                    i++;
+                }
+
+                cbFoodCategory.SelectedIndex = index;
+            }
         }
 
         #endregion

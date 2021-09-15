@@ -39,7 +39,7 @@ namespace milano
             this.dtpkFromDate = new System.Windows.Forms.DateTimePicker();
             this.tpFool = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.txbFoodName = new System.Windows.Forms.TextBox();
+            this.txbSearchFoodName = new System.Windows.Forms.TextBox();
             this.btnSearchFood = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -49,7 +49,7 @@ namespace milano
             this.cbFoodCategory = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.txbSearchFoodName = new System.Windows.Forms.TextBox();
+            this.txbFoodName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.txbFoodID = new System.Windows.Forms.TextBox();
@@ -249,19 +249,19 @@ namespace milano
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.txbFoodName);
+            this.panel6.Controls.Add(this.txbSearchFoodName);
             this.panel6.Controls.Add(this.btnSearchFood);
             this.panel6.Location = new System.Drawing.Point(459, 3);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(345, 66);
             this.panel6.TabIndex = 3;
             // 
-            // txbFoodName
+            // txbSearchFoodName
             // 
-            this.txbFoodName.Location = new System.Drawing.Point(3, 22);
-            this.txbFoodName.Name = "txbFoodName";
-            this.txbFoodName.Size = new System.Drawing.Size(224, 22);
-            this.txbFoodName.TabIndex = 5;
+            this.txbSearchFoodName.Location = new System.Drawing.Point(3, 22);
+            this.txbSearchFoodName.Name = "txbSearchFoodName";
+            this.txbSearchFoodName.Size = new System.Drawing.Size(224, 22);
+            this.txbSearchFoodName.TabIndex = 5;
             // 
             // btnSearchFood
             // 
@@ -344,20 +344,19 @@ namespace milano
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.txbSearchFoodName);
+            this.panel8.Controls.Add(this.txbFoodName);
             this.panel8.Controls.Add(this.label2);
             this.panel8.Location = new System.Drawing.Point(6, 73);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(339, 55);
             this.panel8.TabIndex = 3;
             // 
-            // txbSearchFoodName
+            // txbFoodName
             // 
-            this.txbSearchFoodName.Location = new System.Drawing.Point(113, 16);
-            this.txbSearchFoodName.Name = "txbSearchFoodName";
-            this.txbSearchFoodName.ReadOnly = true;
-            this.txbSearchFoodName.Size = new System.Drawing.Size(223, 22);
-            this.txbSearchFoodName.TabIndex = 1;
+            this.txbFoodName.Location = new System.Drawing.Point(113, 16);
+            this.txbFoodName.Name = "txbFoodName";
+            this.txbFoodName.Size = new System.Drawing.Size(223, 22);
+            this.txbFoodName.TabIndex = 1;
             // 
             // label2
             // 
@@ -385,6 +384,7 @@ namespace milano
             this.txbFoodID.ReadOnly = true;
             this.txbFoodID.Size = new System.Drawing.Size(220, 22);
             this.txbFoodID.TabIndex = 1;
+            this.txbFoodID.TextChanged += new System.EventHandler(this.txbFoodID_TextChanged);
             // 
             // label1
             // 
@@ -1043,7 +1043,7 @@ namespace milano
         private System.Windows.Forms.Button btnShowFood;
         private System.Windows.Forms.Button btnEditFood;
         private System.Windows.Forms.Button btnAddFood;
-        private System.Windows.Forms.TextBox txbFoodName;
+        private System.Windows.Forms.TextBox txbSearchFoodName;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TextBox txbFoodID;
         private System.Windows.Forms.Label label1;
@@ -1054,7 +1054,7 @@ namespace milano
         private System.Windows.Forms.ComboBox cbFoodCategory;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox txbSearchFoodName;
+        private System.Windows.Forms.TextBox txbFoodName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel12;
