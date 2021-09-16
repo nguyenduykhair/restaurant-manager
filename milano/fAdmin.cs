@@ -51,6 +51,11 @@ namespace milano
         // hàm lấy tên từng loại thức ăn ra
         void AddFoodBinding()  
         {
+            // true ở đây là nó chấp nhận 1 bên là chuỗi 1 bên là số
+            /* DataSourceUpdateMode. với mấy cái bên dưới
+            .Never:Nguồn dữ liệu không bao giờ được cập nhật và các giá trị được nhập vào điều khiển không được phân tích cú pháp, xác thực hoặc định dạng lại.
+            .OnPropertyChanged: Nguồn dữ liệu được cập nhật bất cứ khi nào giá trị của thuộc tính điều khiển thay đổi.
+            .OnValidation: Nguồn dữ liệu được cập nhật khi thuộc tính điều khiển được xác thực. Sau khi xác thực, giá trị trong thuộc tính điều khiển cũng được định dạng lại.*/
             txbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name", true, DataSourceUpdateMode.Never));
             txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID", true, DataSourceUpdateMode.Never));
             nmFoodPrice.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
@@ -127,6 +132,25 @@ namespace milano
             }
         }
 
+        private void btnEditFood_Click(object sender, EventArgs e)
+        {
+            string name = txbFoodName.Text;
+            int categoryID = (cbFoodCategory.SelectedItem as Category).ID;
+            float price = (float)nmFoodPrice.Value;
+            int id = Convert.ToInt32(txbFoodID.Text);
+
+            if (FoodDAO.Instance.UpdateFood(id, name, categoryID, price))
+            {
+                MessageBox.Show("Sửa món thành công");
+                LoadListFood();
+                /*if (updateFood != null)
+                    updateFood(this, new EventArgs());*/
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi sửa thức ăn");
+            }
+        }
         #endregion
 
 
