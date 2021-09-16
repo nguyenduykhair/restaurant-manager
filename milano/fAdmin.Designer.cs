@@ -113,7 +113,7 @@ namespace milano
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
-            this.txbAccountType = new System.Windows.Forms.TextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -153,6 +153,7 @@ namespace milano
             this.panel27.SuspendLayout();
             this.panel26.SuspendLayout();
             this.panel23.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -831,10 +832,11 @@ namespace milano
             this.btnResetPassword.TabIndex = 8;
             this.btnResetPassword.Text = "Đặt lại mật khẩu";
             this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
             // 
             // panel28
             // 
-            this.panel28.Controls.Add(this.txbAccountType);
+            this.panel28.Controls.Add(this.numericUpDown1);
             this.panel28.Controls.Add(this.label12);
             this.panel28.Location = new System.Drawing.Point(8, 135);
             this.panel28.Name = "panel28";
@@ -862,9 +864,9 @@ namespace milano
             // 
             // txbDisplayName
             // 
-            this.txbDisplayName.Location = new System.Drawing.Point(128, 15);
+            this.txbDisplayName.Location = new System.Drawing.Point(135, 17);
             this.txbDisplayName.Name = "txbDisplayName";
-            this.txbDisplayName.Size = new System.Drawing.Size(191, 22);
+            this.txbDisplayName.Size = new System.Drawing.Size(175, 22);
             this.txbDisplayName.TabIndex = 1;
             // 
             // label11
@@ -888,10 +890,9 @@ namespace milano
             // 
             // txbUserName
             // 
-            this.txbUserName.Location = new System.Drawing.Point(144, 16);
+            this.txbUserName.Location = new System.Drawing.Point(150, 16);
             this.txbUserName.Name = "txbUserName";
-            this.txbUserName.ReadOnly = true;
-            this.txbUserName.Size = new System.Drawing.Size(178, 22);
+            this.txbUserName.Size = new System.Drawing.Size(172, 22);
             this.txbUserName.TabIndex = 1;
             // 
             // label10
@@ -933,6 +934,7 @@ namespace milano
             this.btnDeleteAccount.TabIndex = 5;
             this.btnDeleteAccount.Text = "Xóa";
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
             // 
             // btnEditAccount
             // 
@@ -942,6 +944,7 @@ namespace milano
             this.btnEditAccount.TabIndex = 4;
             this.btnEditAccount.Text = "Sửa";
             this.btnEditAccount.UseVisualStyleBackColor = true;
+            this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
             // 
             // btnAddAccount
             // 
@@ -951,13 +954,19 @@ namespace milano
             this.btnAddAccount.TabIndex = 3;
             this.btnAddAccount.Text = "Thêm";
             this.btnAddAccount.UseVisualStyleBackColor = true;
+            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
-            // txbAccountType
+            // numericUpDown1
             // 
-            this.txbAccountType.Location = new System.Drawing.Point(150, 16);
-            this.txbAccountType.Name = "txbAccountType";
-            this.txbAccountType.Size = new System.Drawing.Size(160, 22);
-            this.txbAccountType.TabIndex = 1;
+            this.numericUpDown1.Location = new System.Drawing.Point(150, 16);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(42, 22);
+            this.numericUpDown1.TabIndex = 1;
             // 
             // fAdmin
             // 
@@ -1020,6 +1029,7 @@ namespace milano
             this.panel26.ResumeLayout(false);
             this.panel26.PerformLayout();
             this.panel23.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1110,6 +1120,6 @@ namespace milano
         private System.Windows.Forms.TextBox txbUserName;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnResetPassword;
-        private System.Windows.Forms.TextBox txbAccountType;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
