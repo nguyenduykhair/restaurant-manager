@@ -15,12 +15,14 @@ namespace milano
 {
     public partial class fAdmin : Form
     {
-        // này dùng để bắt sự kiện khi nhắn 'Xem'
+        // này dùng để bắt sự kiện khi nhắn 'Xem' danh sách thức ăn 
         BindingSource foodList = new BindingSource();
+        // này dùng để bắt sự kiện khi nhắn 'Xem' danh sách tài khoản
+        BindingSource accountList = new BindingSource();
         public fAdmin()
         {
             InitializeComponent();
-            Load();
+            Load(); 
         }
 
         #region methods
@@ -36,12 +38,31 @@ namespace milano
         {
 
             dtgvFood.DataSource = foodList;
+            dtgvAccount.DataSource = accountList;
+
 
             LoadDateTimePickerBill();
             LoadListBillByDate(dtpkFromDate.Value, dtpkToDate.Value);
             LoadListFood();
+            LoadAccount();
             LoadCategoryIntoCombobox(cbFoodCategory);
             AddFoodBinding();
+            AddAccountBinding();
+        }
+
+
+
+        void AddAccountBinding()
+        {
+            txbUserName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
+            txbDisplayName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
+            // loại tài khoản nên để combobox để cho người dùng lựa chọn loại tài khoản:(vd: admin, nhân viên, khách hàng)
+            txbAccountType.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "Type", true, DataSourceUpdateMode.Never)); 
+        }
+
+        void LoadAccount()
+        {
+            accountList.DataSource = AccountDAO.Instance.GetListAccount();
         }
 
         void LoadDateTimePickerBill()
@@ -179,7 +200,11 @@ namespace milano
             }
         }
 
+        // xem tài khoản
+        private void btnShowAccount_Click(object sender, EventArgs e)
+        {
 
+        }
 
 
         // tìm kiếm thức ăn theo tên 
@@ -212,5 +237,6 @@ namespace milano
             remove { updateFood -= value; }
         }
 
+        
     }
 }

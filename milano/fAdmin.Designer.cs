@@ -101,7 +101,6 @@ namespace milano
             this.panel24 = new System.Windows.Forms.Panel();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.panel28 = new System.Windows.Forms.Panel();
-            this.cbAccountType = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.panel27 = new System.Windows.Forms.Panel();
             this.txbDisplayName = new System.Windows.Forms.TextBox();
@@ -114,6 +113,7 @@ namespace milano
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
+            this.txbAccountType = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -834,20 +834,12 @@ namespace milano
             // 
             // panel28
             // 
-            this.panel28.Controls.Add(this.cbAccountType);
+            this.panel28.Controls.Add(this.txbAccountType);
             this.panel28.Controls.Add(this.label12);
             this.panel28.Location = new System.Drawing.Point(8, 135);
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(322, 55);
             this.panel28.TabIndex = 7;
-            // 
-            // cbAccountType
-            // 
-            this.cbAccountType.FormattingEnabled = true;
-            this.cbAccountType.Location = new System.Drawing.Point(150, 16);
-            this.cbAccountType.Name = "cbAccountType";
-            this.cbAccountType.Size = new System.Drawing.Size(160, 24);
-            this.cbAccountType.TabIndex = 1;
             // 
             // label12
             // 
@@ -931,6 +923,7 @@ namespace milano
             this.btnShowAccount.TabIndex = 6;
             this.btnShowAccount.Text = "Xem";
             this.btnShowAccount.UseVisualStyleBackColor = true;
+            this.btnShowAccount.Click += new System.EventHandler(this.btnShowAccount_Click);
             // 
             // btnDeleteAccount
             // 
@@ -958,6 +951,13 @@ namespace milano
             this.btnAddAccount.TabIndex = 3;
             this.btnAddAccount.Text = "Thêm";
             this.btnAddAccount.UseVisualStyleBackColor = true;
+            // 
+            // txbAccountType
+            // 
+            this.txbAccountType.Location = new System.Drawing.Point(150, 16);
+            this.txbAccountType.Name = "txbAccountType";
+            this.txbAccountType.Size = new System.Drawing.Size(160, 22);
+            this.txbAccountType.TabIndex = 1;
             // 
             // fAdmin
             // 
@@ -1102,7 +1102,6 @@ namespace milano
         private System.Windows.Forms.Button btnEditAccount;
         private System.Windows.Forms.Button btnAddAccount;
         private System.Windows.Forms.Panel panel28;
-        private System.Windows.Forms.ComboBox cbAccountType;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel27;
         private System.Windows.Forms.TextBox txbDisplayName;
@@ -1111,5 +1110,6 @@ namespace milano
         private System.Windows.Forms.TextBox txbUserName;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnResetPassword;
+        private System.Windows.Forms.TextBox txbAccountType;
     }
 }
