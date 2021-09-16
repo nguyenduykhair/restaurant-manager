@@ -151,6 +151,24 @@ namespace milano
                 MessageBox.Show("Có lỗi khi sửa thức ăn");
             }
         }
+
+        private void btnDeleteFood_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(txbFoodID.Text);
+
+            if (FoodDAO.Instance.DeleteFood(id))
+            {
+                MessageBox.Show("Xóa món thành công");
+                LoadListFood();
+               /* if (deleteFood != null)
+                    deleteFood(this, new EventArgs());*/
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi xóa thức ăn");
+            }
+        }
+
         #endregion
 
 

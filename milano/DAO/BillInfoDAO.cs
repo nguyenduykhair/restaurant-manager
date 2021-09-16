@@ -20,6 +20,13 @@ namespace milano.DAO
 
         private BillInfoDAO() { }
 
+
+        // bất cứ BillInfo nào dính tới FoodID thì đều phải xóa hết
+        public void DeleteBillInfoByFoodID(int id)
+        {
+            DataProvider.Instance.ExecuteQuery("delete dbo.BillInfo WHERE idFood = " + id);
+        }
+
         public List<BillInfo> GetListBillInfo(int id) // đối số id này là của thằng bill
         {
             List<BillInfo> listBillInfo = new List<BillInfo>();
