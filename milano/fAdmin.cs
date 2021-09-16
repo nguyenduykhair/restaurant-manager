@@ -25,6 +25,13 @@ namespace milano
 
         #region methods
 
+        List<Food> SearchFoodByName(string name)
+        {
+            List<Food> listFood = FoodDAO.Instance.SearchFoodByName(name);
+
+            return listFood;
+        }
+
         void Load()
         {
 
@@ -87,31 +94,34 @@ namespace milano
 
         private void txbFoodID_TextChanged(object sender, EventArgs e)
         {
-            
-            if (dtgvFood.SelectedCells.Count > 0)
-            {
-                // cách lấy dữ liệu trong datagitview
-                int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value; // key cần tìm
-
-                Category cateogory = CategoryDAO.Instance.GetCategoryByID(id);
-
-                cbFoodCategory.SelectedItem = cateogory;
-
-                int index = -1;
-                int i = 0;
-                foreach (Category item in cbFoodCategory.Items)
+            try
                 {
-                    if (item.ID == cateogory.ID)
+                    if (dtgvFood.SelectedCells.Count > 0)
                     {
-                        index = i;
-                        break;
-                    }
-                    i++;
-                }
+                        // cách lấy dữ liệu trong datagitview
+                        int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value; // key cần tìm
 
-                cbFoodCategory.SelectedIndex = index;
+                        Category cateogory = CategoryDAO.Instance.GetCategoryByID(id);
+
+                        cbFoodCategory.SelectedItem = cateogory;
+
+                        int index = -1;
+                        int i = 0;
+                        foreach (Category item in cbFoodCategory.Items)
+                        {
+                            if (item.ID == cateogory.ID)
+                            {
+                                index = i;
+                                break;
+                            }
+                            i++;
+                        }
+
+                        cbFoodCategory.SelectedIndex = index;
+                    }
+                }
+                catch { }
             }
-        }
 
         private void btnAddFood_Click(object sender, EventArgs e)
         {
@@ -169,6 +179,15 @@ namespace milano
             }
         }
 
+
+
+
+        // tìm kiếm thức ăn theo tên 
+        private void btnSearchFood_Click(object sender, EventArgs e)
+        {
+            foodList.DataSource = SearchFoodByName(txbSearchFoodName.Text);
+        }
+
         #endregion
 
         // xử lấy sự kiện hiển thị
@@ -192,7 +211,6 @@ namespace milano
             add { updateFood += value; }
             remove { updateFood -= value; }
         }
-
 
     }
 }
