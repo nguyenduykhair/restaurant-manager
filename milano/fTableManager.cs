@@ -129,6 +129,19 @@ namespace milano
 
         // dành cho các sự kiện
         #region Events
+
+        private void thêmMónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // gọi thẳng EventArgs của button 
+            btnAddFood_Click(this, new EventArgs());
+        }
+
+        private void thanhToánToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnCheckOut_Click(this, new EventArgs());
+        }
+
+
         void btn_Click(object sender, EventArgs e)
         {
             int tableID = ((sender as Button).Tag as Table).ID;
@@ -280,5 +293,7 @@ namespace milano
 
 
         }
+
+       
     }
 }
