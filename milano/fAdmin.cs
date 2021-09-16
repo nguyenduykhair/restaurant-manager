@@ -51,9 +51,9 @@ namespace milano
         // hàm lấy tên từng loại thức ăn ra
         void AddFoodBinding()  
         {
-            txbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name"));
-            txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID"));
-            nmFoodPrice.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Price"));
+            txbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name", true, DataSourceUpdateMode.Never));
+            txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID", true, DataSourceUpdateMode.Never));
+            nmFoodPrice.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
         }
 
         void LoadCategoryIntoCombobox(ComboBox cb)
@@ -105,6 +105,25 @@ namespace milano
                 }
 
                 cbFoodCategory.SelectedIndex = index;
+            }
+        }
+
+        private void btnAddFood_Click(object sender, EventArgs e)
+        {
+            string name = txbFoodName.Text;
+            int categoryID = (cbFoodCategory.SelectedItem as Category).ID;
+            float price = (float)nmFoodPrice.Value;
+
+            if (FoodDAO.Instance.InsertFood(name, categoryID, price))
+            {
+                MessageBox.Show("Thêm món thành công");
+                LoadListFood();
+                /*if (insertFood != null)
+                    insertFood(this, new EventArgs());*/
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi thêm thức ăn");
             }
         }
 
