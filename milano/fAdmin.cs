@@ -123,8 +123,8 @@ namespace milano
             {
                 MessageBox.Show("Thêm món thành công");
                 LoadListFood();
-                /*if (insertFood != null)
-                    insertFood(this, new EventArgs());*/
+                if (insertFood != null)
+                    insertFood(this, new EventArgs());
             }
             else
             {
@@ -143,8 +143,8 @@ namespace milano
             {
                 MessageBox.Show("Sửa món thành công");
                 LoadListFood();
-                /*if (updateFood != null)
-                    updateFood(this, new EventArgs());*/
+                if (updateFood != null)
+                    updateFood(this, new EventArgs());
             }
             else
             {
@@ -160,8 +160,8 @@ namespace milano
             {
                 MessageBox.Show("Xóa món thành công");
                 LoadListFood();
-               /* if (deleteFood != null)
-                    deleteFood(this, new EventArgs());*/
+                if (deleteFood != null)
+                    deleteFood(this, new EventArgs());
             }
             else
             {
@@ -170,6 +170,28 @@ namespace milano
         }
 
         #endregion
+
+        // xử lấy sự kiện hiển thị
+        private event EventHandler insertFood;
+        public event EventHandler InsertFood
+        {
+            add { insertFood += value; }
+            remove { insertFood -= value; }
+        }
+
+        private event EventHandler deleteFood;
+        public event EventHandler DeleteFood
+        {
+            add { deleteFood += value; }
+            remove { deleteFood -= value; }
+        }
+
+        private event EventHandler updateFood;
+        public event EventHandler UpdateFood
+        {
+            add { updateFood += value; }
+            remove { updateFood -= value; }
+        }
 
 
     }

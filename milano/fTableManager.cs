@@ -155,8 +155,34 @@ namespace milano
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fAdmin f = new fAdmin();
+            f.InsertFood += f_InsertFood;
+            f.DeleteFood += f_DeleteFood;
+            f.UpdateFood += f_UpdateFood;
             f.ShowDialog();
         }
+
+        void f_UpdateFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID); // cập nhập lại danh sách các món ăn
+            if (lsvBill.Tag != null)
+                ShowBill((lsvBill.Tag as Table).ID); // load lại hóa đơn
+        }
+
+        void f_DeleteFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+                ShowBill((lsvBill.Tag as Table).ID);
+            LoadTable();
+        }
+
+        void f_InsertFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+                ShowBill((lsvBill.Tag as Table).ID);
+        }
+
 
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -178,6 +204,12 @@ namespace milano
         {
             Table table = lsvBill.Tag as Table; // lấy được cái table hiện tại
 
+            if (table == null)
+            {
+                MessageBox.Show("Hãy chọn bàn");
+                return;
+            }
+
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID); // lấy được cái Bill hiện tại
             int foodID = (cbFood.SelectedItem as Food).ID;
             int count = (int)nmFoodCount.Value;
@@ -198,6 +230,8 @@ namespace milano
 
             LoadTable();
         }
+
+
         // button khi nhấn THANH TOÁN
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
