@@ -32,6 +32,11 @@ namespace milano
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpBill = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnLastBillPage = new System.Windows.Forms.Button();
+            this.btnNextBillPage = new System.Windows.Forms.Button();
+            this.btnPrevioursBillPage = new System.Windows.Forms.Button();
+            this.btnFristBillPage = new System.Windows.Forms.Button();
+            this.txbPageBill = new System.Windows.Forms.TextBox();
             this.dtgvBill = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnViewBill = new System.Windows.Forms.Button();
@@ -101,6 +106,7 @@ namespace milano
             this.panel24 = new System.Windows.Forms.Panel();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.panel28 = new System.Windows.Forms.Panel();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.panel27 = new System.Windows.Forms.Panel();
             this.txbDisplayName = new System.Windows.Forms.TextBox();
@@ -113,7 +119,6 @@ namespace milano
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -150,10 +155,10 @@ namespace milano
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.panel24.SuspendLayout();
             this.panel28.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel27.SuspendLayout();
             this.panel26.SuspendLayout();
             this.panel23.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -183,11 +188,63 @@ namespace milano
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btnLastBillPage);
+            this.panel4.Controls.Add(this.btnNextBillPage);
+            this.panel4.Controls.Add(this.btnPrevioursBillPage);
+            this.panel4.Controls.Add(this.btnFristBillPage);
+            this.panel4.Controls.Add(this.txbPageBill);
             this.panel4.Controls.Add(this.dtgvBill);
             this.panel4.Location = new System.Drawing.Point(3, 44);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(804, 488);
             this.panel4.TabIndex = 3;
+            // 
+            // btnLastBillPage
+            // 
+            this.btnLastBillPage.Location = new System.Drawing.Point(723, 455);
+            this.btnLastBillPage.Name = "btnLastBillPage";
+            this.btnLastBillPage.Size = new System.Drawing.Size(75, 23);
+            this.btnLastBillPage.TabIndex = 5;
+            this.btnLastBillPage.Text = "Last";
+            this.btnLastBillPage.UseVisualStyleBackColor = true;
+            this.btnLastBillPage.Click += new System.EventHandler(this.btnLastBillPage_Click);
+            // 
+            // btnNextBillPage
+            // 
+            this.btnNextBillPage.Location = new System.Drawing.Point(622, 455);
+            this.btnNextBillPage.Name = "btnNextBillPage";
+            this.btnNextBillPage.Size = new System.Drawing.Size(95, 23);
+            this.btnNextBillPage.TabIndex = 4;
+            this.btnNextBillPage.Text = "Next";
+            this.btnNextBillPage.UseVisualStyleBackColor = true;
+            this.btnNextBillPage.Click += new System.EventHandler(this.btnNextBillPage_Click);
+            // 
+            // btnPrevioursBillPage
+            // 
+            this.btnPrevioursBillPage.Location = new System.Drawing.Point(84, 455);
+            this.btnPrevioursBillPage.Name = "btnPrevioursBillPage";
+            this.btnPrevioursBillPage.Size = new System.Drawing.Size(75, 23);
+            this.btnPrevioursBillPage.TabIndex = 3;
+            this.btnPrevioursBillPage.Text = "Previours";
+            this.btnPrevioursBillPage.UseVisualStyleBackColor = true;
+            this.btnPrevioursBillPage.Click += new System.EventHandler(this.btnPrevioursBillPage_Click);
+            // 
+            // btnFristBillPage
+            // 
+            this.btnFristBillPage.Location = new System.Drawing.Point(3, 455);
+            this.btnFristBillPage.Name = "btnFristBillPage";
+            this.btnFristBillPage.Size = new System.Drawing.Size(75, 23);
+            this.btnFristBillPage.TabIndex = 2;
+            this.btnFristBillPage.Text = "First";
+            this.btnFristBillPage.UseVisualStyleBackColor = true;
+            this.btnFristBillPage.Click += new System.EventHandler(this.btnFristBillPage_Click);
+            // 
+            // txbPageBill
+            // 
+            this.txbPageBill.Location = new System.Drawing.Point(344, 456);
+            this.txbPageBill.Name = "txbPageBill";
+            this.txbPageBill.Size = new System.Drawing.Size(100, 22);
+            this.txbPageBill.TabIndex = 1;
             // 
             // dtgvBill
             // 
@@ -197,7 +254,7 @@ namespace milano
             this.dtgvBill.Name = "dtgvBill";
             this.dtgvBill.RowHeadersWidth = 51;
             this.dtgvBill.RowTemplate.Height = 24;
-            this.dtgvBill.Size = new System.Drawing.Size(798, 475);
+            this.dtgvBill.Size = new System.Drawing.Size(798, 444);
             this.dtgvBill.TabIndex = 0;
             // 
             // panel3
@@ -843,6 +900,18 @@ namespace milano
             this.panel28.Size = new System.Drawing.Size(322, 55);
             this.panel28.TabIndex = 7;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(150, 16);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(42, 22);
+            this.numericUpDown1.TabIndex = 1;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -956,18 +1025,6 @@ namespace milano
             this.btnAddAccount.UseVisualStyleBackColor = true;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(150, 16);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(42, 22);
-            this.numericUpDown1.TabIndex = 1;
-            // 
             // fAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -980,6 +1037,7 @@ namespace milano
             this.tabControl1.ResumeLayout(false);
             this.tpBill.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).EndInit();
             this.panel3.ResumeLayout(false);
             this.tpFool.ResumeLayout(false);
@@ -1024,12 +1082,12 @@ namespace milano
             this.panel24.ResumeLayout(false);
             this.panel28.ResumeLayout(false);
             this.panel28.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel27.ResumeLayout(false);
             this.panel27.PerformLayout();
             this.panel26.ResumeLayout(false);
             this.panel26.PerformLayout();
             this.panel23.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1121,5 +1179,10 @@ namespace milano
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnResetPassword;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button btnLastBillPage;
+        private System.Windows.Forms.Button btnNextBillPage;
+        private System.Windows.Forms.Button btnPrevioursBillPage;
+        private System.Windows.Forms.Button btnFristBillPage;
+        private System.Windows.Forms.TextBox txbPageBill;
     }
 }

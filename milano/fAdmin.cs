@@ -342,6 +342,26 @@ namespace milano
             remove { updateFood -= value; }
         }
 
-        
+        private void btnFristBillPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void btnPrevioursBillPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNextBillPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void btnLastBillPage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
