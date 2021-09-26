@@ -245,6 +245,9 @@ namespace milano
             this.txbPageBill.Name = "txbPageBill";
             this.txbPageBill.Size = new System.Drawing.Size(100, 22);
             this.txbPageBill.TabIndex = 1;
+            this.txbPageBill.Text = "1";
+            this.txbPageBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txbPageBill.TextChanged += new System.EventHandler(this.txbPageBill_TextChanged);
             // 
             // dtgvBill
             // 

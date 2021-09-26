@@ -344,24 +344,45 @@ namespace milano
 
         private void btnFristBillPage_Click(object sender, EventArgs e)
         {
-
+            txbPageBill.Text = "1";
         }
 
+        private void btnLastBillPage_Click(object sender, EventArgs e)
+        {
+            int sumRecord = BillDAO.Instance.GetNumBillListByDate(dtpkFromDate.Value, dtpkToDate.Value);
+
+            int lastPage = sumRecord / 10;
+
+            if (sumRecord % 10 != 0)
+                lastPage++;
+
+            txbPageBill.Text = lastPage.ToString();
+        }
+
+        private void txbPageBill_TextChanged(object sender, EventArgs e)
+        {
+            dtgvBill.DataSource = BillDAO.Instance.GetBillListByDateAndPage(dtpkFromDate.Value, dtpkToDate.Value, Convert.ToInt32(txbPageBill.Text));
+        }
 
         private void btnPrevioursBillPage_Click(object sender, EventArgs e)
         {
+            int page = Convert.ToInt32(txbPageBill.Text);
 
+            if (page > 1)
+                page--;
+
+            txbPageBill.Text = page.ToString();
         }
 
         private void btnNextBillPage_Click(object sender, EventArgs e)
         {
+            int page = Convert.ToInt32(txbPageBill.Text);
+            int sumRecord = BillDAO.Instance.GetNumBillListByDate(dtpkFromDate.Value, dtpkToDate.Value);
 
-        }
+            if (page < sumRecord)
+                page++;
 
-
-        private void btnLastBillPage_Click(object sender, EventArgs e)
-        {
-
+            txbPageBill.Text = page.ToString();
         }
     }
 }

@@ -74,6 +74,12 @@ namespace milano.DAO
             return DataProvider.Instance.ExecuteQuery("exec USP_GetListBillByDateAndPage @checkIn , @checkOut , @page", new object[] { checkIn, checkOut, pageNum });
         }
 
+        // lay ra so luong trang
+        public int GetNumBillListByDate(DateTime checkIn, DateTime checkOut)
+        {
+            return (int)DataProvider.Instance.ExecuteScalar("exec USP_GetNumBillByDate @checkIn , @checkOut", new object[] { checkIn, checkOut });
+        }
+
         public int GetMaxIDBill()
         {
             try // cố gắng để làm việc này
