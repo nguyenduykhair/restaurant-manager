@@ -603,6 +603,7 @@ CREATE FUNCTION [dbo].[fuConvertToUnsign1] ( @strInput NVARCHAR(4000) ) RETURNS 
 -- select * FROM dbo.Account
 
 
+-- lay ra trang
 CREATE PROC USP_GetListBillByDateAndPage
 @checkIn date, @checkOut date, @page int
 AS 
@@ -621,6 +622,17 @@ END
 GO
 
 
+-- lay ra so luong bill
+CREATE PROC USP_GetNumBillByDate
+@checkIn date, @checkOut date
+AS 
+BEGIN
+	SELECT COUNT(*)
+	FROM dbo.Bill AS b,dbo.TableFood AS t
+	WHERE DateCheckIn >= @checkIn AND DateCheckOut <= @checkOut AND b.status = 1
+	AND t.id = b.idTable
+END
+GO
 
 
 
