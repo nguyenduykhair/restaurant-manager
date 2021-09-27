@@ -1,5 +1,4 @@
-﻿
-namespace milano
+﻿namespace milano
 {
     partial class fAdmin
     {
@@ -29,6 +28,8 @@ namespace milano
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpBill = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -119,6 +120,11 @@ namespace milano
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.milanoDataSet = new milano.milanoDataSet();
+            this.USP_GetListBillByDateForReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.USP_GetListBillByDateForReportTableAdapter = new milano.milanoDataSetTableAdapters.USP_GetListBillByDateForReportTableAdapter();
             this.tabControl1.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -159,6 +165,9 @@ namespace milano
             this.panel27.SuspendLayout();
             this.panel26.SuspendLayout();
             this.panel23.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.milanoDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.USP_GetListBillByDateForReportBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -168,6 +177,7 @@ namespace milano
             this.tabControl1.Controls.Add(this.tpFoodCategory);
             this.tabControl1.Controls.Add(this.tpTable);
             this.tabControl1.Controls.Add(this.tpAccount);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1028,6 +1038,43 @@ namespace milano
             this.btnAddAccount.UseVisualStyleBackColor = true;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.reportViewer1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(807, 528);
+            this.tabPage1.TabIndex = 4;
+            this.tabPage1.Text = "Report";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // reportViewer1
+            // 
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.USP_GetListBillByDateForReportBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "milano.Report1.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(804, 525);
+            this.reportViewer1.TabIndex = 0;
+            // 
+            // milanoDataSet
+            // 
+            this.milanoDataSet.DataSetName = "milanoDataSet";
+            this.milanoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // USP_GetListBillByDateForReportBindingSource
+            // 
+            this.USP_GetListBillByDateForReportBindingSource.DataMember = "USP_GetListBillByDateForReport";
+            this.USP_GetListBillByDateForReportBindingSource.DataSource = this.milanoDataSet;
+            // 
+            // USP_GetListBillByDateForReportTableAdapter
+            // 
+            this.USP_GetListBillByDateForReportTableAdapter.ClearBeforeFill = true;
+            // 
             // fAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1037,6 +1084,7 @@ namespace milano
             this.Name = "fAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
+            this.Load += new System.EventHandler(this.fAdmin_Load);
             this.tabControl1.ResumeLayout(false);
             this.tpBill.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -1091,6 +1139,9 @@ namespace milano
             this.panel26.ResumeLayout(false);
             this.panel26.PerformLayout();
             this.panel23.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.milanoDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.USP_GetListBillByDateForReportBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1187,5 +1238,10 @@ namespace milano
         private System.Windows.Forms.Button btnPrevioursBillPage;
         private System.Windows.Forms.Button btnFristBillPage;
         private System.Windows.Forms.TextBox txbPageBill;
+        private System.Windows.Forms.TabPage tabPage1;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource USP_GetListBillByDateForReportBindingSource;
+        private milanoDataSet milanoDataSet;
+        private milanoDataSetTableAdapters.USP_GetListBillByDateForReportTableAdapter USP_GetListBillByDateForReportTableAdapter;
     }
 }

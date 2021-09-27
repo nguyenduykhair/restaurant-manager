@@ -636,6 +636,17 @@ GO
 
 
 
+-- report
+CREATE PROC USP_GetListBillByDateForReport
+@checkIn date, @checkOut date
+AS 
+BEGIN
+	SELECT t.name, b.totalPrice, DateCheckIn, DateCheckOut, discount
+	FROM dbo.Bill AS b,dbo.TableFood AS t
+	WHERE DateCheckIn >= @checkIn AND DateCheckOut <= @checkOut AND b.status = 1
+	AND t.id = b.idTable
+END
+GO
 
 
 

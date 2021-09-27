@@ -25,7 +25,7 @@ namespace milano
         public fAdmin()
         {
             InitializeComponent();
-            Load(); 
+            LoadData(); 
         }
 
         #region methods
@@ -37,7 +37,7 @@ namespace milano
             return listFood;
         }
 
-        void Load()
+        void LoadData()
         {
 
             dtgvFood.DataSource = foodList;
@@ -383,6 +383,14 @@ namespace milano
                 page++;
 
             txbPageBill.Text = page.ToString();
+        }
+
+        private void fAdmin_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'milanoDataSet.USP_GetListBillByDateForReport' table. You can move, or remove it, as needed.
+            this.USP_GetListBillByDateForReportTableAdapter.Fill(this.milanoDataSet.USP_GetListBillByDateForReport, dtpkFromDate.Value, dtpkToDate.Value);
+
+            this.reportViewer1.RefreshReport();
         }
     }
 }
