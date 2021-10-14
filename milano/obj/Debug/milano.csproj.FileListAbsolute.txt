@@ -152,3 +152,4 @@ D:\C#\framework\project\milano\milano\milano\bin\Debug\zh-CHS\Microsoft.ReportVi
 D:\C#\framework\project\milano\milano\milano\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 D:\C#\framework\project\milano\milano\milano\obj\Debug\RdlCompile.cache
 D:\C#\framework\project\milano\milano\milano\obj\Debug\RdlCompile.compiled
+D:\C#\framework\project\milano\milano\milano\bin\Debug\Guna.UI2.dll
