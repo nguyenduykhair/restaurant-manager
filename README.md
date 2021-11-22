@@ -1,1 +1,1 @@
-# milano-store-manager
+# Restaurant Manager
